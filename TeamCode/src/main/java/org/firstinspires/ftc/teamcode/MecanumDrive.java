@@ -50,7 +50,7 @@ public final class MecanumDrive {
     public static class Params {
         // drive model parameters
         public double inPerTick = 120.0/110604.0;
-        public double lateralInPerTick = 1;
+        public double lateralInPerTick = (120.0/110604.0) * 1.07;
         public double trackWidthTicks = 0;
 
         // feedforward parameters (in tick units)
@@ -181,9 +181,6 @@ public final class MecanumDrive {
         leftBack = hardwareMap.get(DcMotorEx.class, "leftBack");
         rightBack = hardwareMap.get(DcMotorEx.class, "rightBack");
         rightFront = hardwareMap.get(DcMotorEx.class, "rightFront");
-
-        leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-        leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
 
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
